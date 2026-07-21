@@ -8,7 +8,7 @@ Les modèles sont des représentation des données de votre application et de la
 // models/productModel.js
 const mongoose = require('mongoose')
 
-const productSchema = new mangoose.Schema({
+const productSchema = new mongoose.Schema({
     name: {
         type: String,
         required: true
