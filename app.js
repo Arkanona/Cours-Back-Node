@@ -8,13 +8,15 @@ require('dotenv').config()
 require('./config/db')
 
 // Import des routes
-const productsRoutes = require('./routes/products')
+const productsRoutes = require('./routes/productsRoutes')
+const authRoutes = require('./routes/authRoutes')
 
 
 app.use(express.json())
 
 // Monte le routeur sur le chemin de base
 app.use('/api/v1/products', productsRoutes)
+app.use('/api/v1/auth', authRoutes)
 
 app.get('/', (req, res) =>{
     res.send('Bienvenue sur mon API RESTful !')
