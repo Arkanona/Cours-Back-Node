@@ -62,7 +62,7 @@ Un framework web minimaliste pour Node.js. Il facilite :
 
 ---
 
-## 4. Mettre ne place un serveur Express
+## 4. Mettre en place un serveur Express
 
 ### Étape 1 - Initialiser le projet
 ```bash
@@ -139,9 +139,6 @@ module.exports = router
 // app.js
 const userRoutes = require('./routes/users.js')
 
-```javascript
-//app.js
-const userRoutes = require('./routes/users.js')
 app.use('/api/v1/users', userRoutes)
 ```
 
