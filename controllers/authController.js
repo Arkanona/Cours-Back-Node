@@ -2,7 +2,7 @@ const jwt = require('jsonwebtoken')
 const User = require('../models/userModel')
 
 const JWT_SECRET = process.env.JWT_SECRET
-const JWT_EXPIRES_IN = '24h'
+const JWT_EXPIRES_IN = '364d'
 
 // Helper to generate JWT token
 const generateToken = (id) => {
