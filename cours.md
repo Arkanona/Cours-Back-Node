@@ -254,7 +254,7 @@ app.use(
     helmet({
         // La CSP (Content Security Policy)
         // Pour une API purement JSON, on désactive la CSP
-        helmet.contentsecurityPolicy: false,
+        contentsecurityPolicy: false,
         // Si votre API intéragit avec d'autres domaines
         crossOriginRessourcePolicy: { policy: "cross-origin" }
     })

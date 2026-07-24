@@ -2,6 +2,8 @@ const express = require('express')
 const app = express()
 const port = 3000
 const cors = require('cors')
+const helmet = require('helmet')
+const rateLimit = require('express-rate-limit')
 // Pour pouvoir utiliser les variables d'environnements
 // Ne pas oublier d'installer dotenv : `npm install dotenv`
 // Ensuite pour utiliser : process.env.NOM_DE_VARIABLE_DANS_ENV
@@ -32,6 +34,19 @@ const corsOption = {
     origin: 'http://localhost:3000'
 }
 app.use(cors(corsOption))
+app.use(
+    helmet({
+        contentsecurityPolicy: false,
+        crossOriginResourcePolicy: { policy: 'cross-origin'}
+    })
+)
+
+const limiter = rateLimit({
+    windowMs: 15 * 60 * 1000,
+    limit: 100,
+    message: { status: 429, error:  'trop de requête, réessayer plus tard.'}
+})
+app.use(limiter)
 
 // Monte le routeur sur le chemin de base
 app.use('/api/v1/products', productsRoutes)
