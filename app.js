@@ -1,6 +1,7 @@
 const express = require('express')
 const app = express()
 const port = 3000
+const cors = require('cors')
 // Pour pouvoir utiliser les variables d'environnements
 // Ne pas oublier d'installer dotenv : `npm install dotenv`
 // Ensuite pour utiliser : process.env.NOM_DE_VARIABLE_DANS_ENV
@@ -24,6 +25,13 @@ const userSeqRoutes = require('./routes/userSeqRoutes')
 
 
 app.use(express.json())
+// Si on ne met pas de paramètres, on authorise TOUS les accès
+// On peut également configurer des options pour authoriser certaines ressources
+const corsOption = {
+    // Ce qu'on ajoute dans l'origin c'est les domaines qui sont AUTORISÉ
+    origin: 'http://localhost:3000'
+}
+app.use(cors(corsOption))
 
 // Monte le routeur sur le chemin de base
 app.use('/api/v1/products', productsRoutes)
